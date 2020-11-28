@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApp_Ex_3.Models.Familia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Famílias</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.condominio)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-info">Cadastrar Família</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.condominio.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Familia" class="btn btn-primary text-left">Editar</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id_Familia" class="btn btn-secondary text-right" onclick="return confirm('Deseja excluir o registro?')">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

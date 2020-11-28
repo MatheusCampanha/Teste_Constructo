@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApp_Ex_3.Models.Morador>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Moradores</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdBichos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.familia)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-info">Cadastrar Morador</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdBichos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.familia.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Morador" class="btn btn-primary text-left">Editar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id_Morador" class="btn btn-secondary text-right" onclick="return confirm('Deseja excluir o registro?')">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
